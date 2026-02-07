@@ -6,172 +6,245 @@
     <title>Anoop Vasist Navile Anandkumar | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- Core Styles --- */
+        /* --- Core Styles (Dark Theme) --- */
         html { scroll-behavior: smooth; }
         body { 
-            font-family: "Times New Roman", Times, serif;                
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                
             margin: 0; 
             line-height: 1.6; 
-            color: #fff; /* White text for background */
+            color: #d1d1d1; 
+            background-color: #0a0e17;
             overflow-x: hidden; 
         }
         
         /* --- Video Background --- */
         .video-bg {
             position: fixed;
-            right: 0;
-            bottom: 0;
+            top: 50%;
+            left: 50%;
             min-width: 100%;
             min-height: 100%;
+            width: auto;
+            height: auto;
             z-index: -1;
-            object-fit: cover;
+            transform: translate(-50%, -50%);
+            object-fit: cover; 
         }
 
         /* --- Navbar --- */
         nav { 
-            background: rgba(0, 0, 0, 0.85); /* Darker, more opaque navbar */
+            background: rgba(15, 20, 30, 0.95);
             color: #fff; 
             padding: 1rem; 
             position: fixed; 
             top: 0; 
             width: 100%; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.5); 
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
-        nav ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        nav ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         nav a { 
-            color: #fff; 
+            color: #b0c4de; 
             text-decoration: none; 
-            font-weight: 600; 
+            font-weight: 500; 
             transition: all 0.3s;
             padding: 5px 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
-        nav a:hover, nav a.active { color: #0070f3; }
+        nav a:hover, nav a.active { color: #5dade2; }
 
         /* --- Sections --- */
         section { 
-            padding: 4rem 2rem 2rem 2rem; /* Reduced vertical space */
+            padding: 5rem 2rem 2rem 2rem; 
             min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center;
+            box-sizing: border-box; 
         }
         
-        .container { max-width: 1000px; margin: 0 auto; width: 100%; }
+        .container { max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
         
         /* --- Animations (Scroll Reveal) --- */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-in-out;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- Specific Styling --- */
-        #home { 
-            text-align: center; 
-            background: transparent; 
+        /* --- Headings --- */
+        h1, h2 { color: #fff; font-family: 'Roboto', sans-serif; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; }
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #5dade2;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Grid Layouts --- */
+        .card-container { display: grid; gap: 20px; width: 100%; }
+
+        /* Experience & Projects (2-Column) */
+        #experience .card-container, #projects .card-container { 
+            grid-template-columns: repeat(2, 1fr); 
+        }
+
+        /* Leadership (3-Column) */
+        #leadership .card-container { 
+            grid-template-columns: repeat(3, 1fr); 
+        }
+
+        /* Education (2-Column) */
+        #education .card-container { 
+            grid-template-columns: repeat(2, 1fr); 
         }
         
-        /* Headings color */
-        h1, h2 { color: white; font-family: Georgia, serif; }
-
-        #home h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
-        #home .subtitle { font-size: 1.5rem; color: white; margin-bottom: 1rem; font-weight: bold; }
-        #home .contact-info { color: white; font-weight: 500; font-size: 1.1rem; }
-        
-        h2 { text-align: center; font-size: 2.8rem; margin-bottom: 2rem; }
-        
-        .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; }
-        
-        /* Card Background and Text */
+        /* --- Card Style (Reference Image Style) --- */
         .card { 
-            background: rgba(27, 42, 63, 0.7); /* #1B2A3F with 90% opacity */
-            color: #fff; /* White text */
-            padding: 2rem; 
+            background: rgba(20, 25, 35, 0.7);
+            backdrop-filter: blur(10px);
+            color: #d1d1d1; 
+            padding: 1.8rem; 
             border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
-            transition: transform 0.3s; 
-            border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s; 
+            display: flex;
+            flex-direction: column;
         }
         
-        /* Card text color white */
-        .card p, .card li, .card span { color: #fff; font-family: "Times New Roman", Times, serif; }
+        .card:hover { transform: translateY(-5px); border-color: rgba(93, 173, 226, 0.3); }
         
-        /* White titles inside cards */
-        .card h3 { color: #fff; margin-top: 0; }
-        .card h4 { color: #f0f0f0; }
-
-        .card:hover { transform: translateY(-5px); }
-        .date { font-size: 0.85rem; color: #eee; font-style: italic; display: block; margin-bottom: 1rem; }
-        
-        ul.details { padding-left: 20px; font-size: 0.95rem; }
-        ul.details li { margin-bottom: 0.5rem; }
-
-        .skills-list {
-            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-            margin-bottom: 1.5rem; /* Space between the sub-sections */
+        /* --- Card Content Styling --- */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1rem;
         }
-        /* Bubble background color */
-        .skill-tag {
-            background: #3E6C86; /* Darker blue for bubbles */
-            color: white; 
-            padding: 8px 15px; 
-            border-radius: 20px; 
-            font-size: 0.9rem; 
+
+        .card-header h3 { 
+            color: #5dade2; 
+            margin: 0; 
+            font-size: 1.4rem;
+        }
+        
+        .date { 
+            font-size: 0.85rem; 
+            color: #fff; 
+            background: rgba(93, 173, 226, 0.2); 
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(93, 173, 226, 0.3);
+            white-space: nowrap;
+        }
+
+        .card h4 { 
+            color: #fff; 
+            margin: 0 0 10px 0; 
+            font-size: 1.1rem;
             font-weight: 500;
         }
+        
+        .card p, .card li { font-size: 0.95rem; color: #d1d1d1; }
+        
+        ul.details { padding-left: 20px; margin: 0; }
+        ul.details li { margin-bottom: 0.5rem; }
 
-        /* Resume Button Styling */
-        .resume-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: #1B2A3F;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            border: 2px solid #1B2A3F;
-            transition: all 0.3s;
-            cursor: pointer;
+        /* Skills specific */
+        .skills-list {
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+            margin-top: 1rem;
         }
-        .resume-btn:hover { background-color: transparent; color: #1B2A3F; border-color: #1B2A3F; }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05); 
+            color: #5dade2; 
+            padding: 6px 12px; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            border: 1px solid rgba(93, 173, 226, 0.2);
+        }
 
-        /* --- Circular Image Styling --- */
+        /* --- Profile Section --- */
+        #home { text-align: center; }
+        #home .card { max-width: 800px; margin: auto; align-items: center; }
+
         .profile-container {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             margin: 0 auto 1rem auto;
             border-radius: 50%;
             overflow: hidden;
-            border: 5px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border: 4px solid #5dade2;
         }
-        .profile-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .profile-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Updated Name Color */
+        #home h1 { font-size: 3rem; margin: 0.5rem 0; color: #5dade2; }
+        
+        .subtitle { font-size: 1.3rem; color: #5dade2; margin-bottom: 1rem; font-weight: bold; }
+        .contact-info { color: #b0c4de; font-weight: 400; font-size: 1rem; }
 
-        /* --- Contact Icons --- */
+        /* --- Buttons & Links --- */
+        .resume-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: transparent;
+            color: #5dade2;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 2px solid #5dade2;
+            transition: all 0.3s;
+        }
+        .resume-btn:hover { background-color: #5dade2; color: #0a0e17; }
+
         .contact-links {
             display: flex;
             justify-content: center;
             gap: 25px;
             margin-top: 15px;
-            font-size: 2.2rem; /* Larger icon size */
+            font-size: 2rem;
         }
-        .contact-links a { color: white; transition: color 0.3s; text-decoration: none; }
-        .contact-links a:hover { color: #1B2A3F; }
+        .contact-links a { color: #d1d1d1; transition: color 0.3s; }
+        .contact-links a:hover { color: #5dade2; }
+
+        /* --- Leadership Specifics --- */
+        /* Updated Leadership Heading Color */
+        #leadership .card h3 { 
+            color: #5dade2; 
+            margin: 0 0 10px 0; 
+            font-size: 1.3rem;
+        }
+
+        /* --- Media Queries for Mobile --- */
+        @media (max-width: 992px) {
+            #experience .card-container, #projects .card-container, #education .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            #leadership .card-container {
+                grid-template-columns: 1fr;
+            }
+            #home h1 { font-size: 2rem; }
+            .card-header { flex-direction: column; align-items: flex-start; }
+        }
     </style>
 </head>
 <body onload="window.location.hash = '#home';">
 
-    <video autoplay loop muted playsinline class="video-bg">
-        <source src="bg.mov" type="video/mp4">
+    <video autoplay loop muted playsinline class="video-bg" id="myVideo">
+        <source src="bg.mp4" type="video/mp4">
     </video>
 
     <nav>
@@ -181,6 +254,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#leadership">Leadership</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -192,7 +266,7 @@
             </div>
             <h1>Anoop Vasist Navile Anandkumar</h1>
             <p class="subtitle">Computer Science Graduate Student at NYU</p>
-            <p class="contact-info">New York | avnawork@gmail.com | (123) 456-7890</p>
+            <p class="contact-info">New York | avnawork@gmail.com | +1 (347) 652-9844</p>
         </div>
     </section>
 
@@ -201,21 +275,25 @@
             <h2>Experience</h2>
             <div class="card-container">
                 <div class="card">
-                    <h3>HashedIn by Deloitte</h3>
-                    <h4>Software Development Engineer</h4>
-                    <span class="date">May 2025 – Jul 2025</span>
+                    <div class="card-header">
+                        <h3>HashedIn by Deloitte</h3>
+                        <span class="date">Feb 2025 – Jul 2025</span>
+                    </div>
+                    <h4>Software Development Engineer & Intern</h4>
                     <ul class="details">
-                        <li>Built scalable full-stack features with Angular, Spring Boot, .NET Core.</li>
-                        <li>Implemented secure backend systems using JWT authentication, RBAC, and Docker.</li>
-                        <li>Collaborated to modernize assessment platform, improving processing time by 30%.</li>
+                        <li>Built scalable full-stack features with Angular, Spring Boot, .NET Core and developed RESTful APIs.</li>
+                        <li>Implemented secure backend systems using JWT authentication, RBAC, and Docker; set up CI/CD pipelines and contributed through Agile sprints, code reviews, unit testing, and production deployments.</li>
+                        <li>Collaborated in a 5-member team to modernize the company’s assessment/testing platform by refactoring core modules, redesigning UI/UX, and improving processing time by 30%, while integrating LLM-based question generation, voice-to-text analysis, and automated counter-question evaluation for interview and exam workflows.</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>Mind Path Innovations</h3>
+                    <div class="card-header">
+                        <h3>Mind Path Innovations Pvt. Ltd</h3>
+                        <span class="date">Jul 2024 – Dec 2024</span>
+                    </div>
                     <h4>Software Development Intern</h4>
-                    <span class="date">Jul 2024 – Dec 2024</span>
                     <ul class="details">
-                        <li>Developed dynamic full-stack web applications using HTML, Django, and MySQL.</li>
+                        <li>Developed dynamic full-stack web applications using HTML, Django, and MySQL for internal management systems.</li>
                         <li>Designed REST APIs with CRUD operations, authentication, and session management.</li>
                     </ul>
                 </div>
@@ -228,22 +306,39 @@
             <h2>Projects</h2>
             <div class="card-container">
                 <div class="card">
-                    <h3>Street View Geolocation</h3>
-                    <span class="date">Nov 2025 - Dec 2025</span>
-                    <p>Predicted U.S. state and GPS coordinates from 263,920 images using transformer-based deep learning, achieving 0.943 Kaggle score.</p>
+                    <div class="card-header">
+                        <h3>Street View Geolocation</h3>
+                        <span class="date">Nov 2025 - Dec 2025</span>
+                    </div>
+                    <p>Predicted U.S. state and GPS coordinates from 263,920 panoramic images using a transformer-based multi-view deep learning pipeline; applied feature fusion, multi-task loss, and model ensembling to achieve a 0.943 Kaggle score.</p>
+                    <p>Applied data augmentation, transfer learning, and hyperparameter tuning to improve generalization.</p>
                     <p><strong>Tools:</strong> Python, PyTorch, Transformers, OpenCV</p>
                 </div>
                 <div class="card">
-                    <h3>Job Prep AI Platform</h3>
-                    <span class="date">Sep 2024 – Nov 2024</span>
-                    <p>Built full-stack AI interview platform using NLP for resume parsing and LLMs for mock interviews.</p>
+                    <div class="card-header">
+                        <h3>Job Prep AI Platform</h3>
+                        <span class="date">Sep 2024 – Nov 2024</span>
+                    </div>
+                    <p>Built a full-stack AI-powered interview preparation platform with NLP-based resume parsing and integrated LLM APIs for personalized behavioral and technical mock interviews.</p>
+                    <p>Designed secure RESTful backend with Django, token-based authentication, and session handling. Dynamic UI with React hooks, animations, and responsive design. Stored and processed user analytics using MySQL, enabling performance tracking.</p>
                     <p><strong>Tools:</strong> React, Django, REST, MySQL, LLMs</p>
                 </div>
                 <div class="card">
-                    <h3>Gourmet Vision</h3>
-                    <span class="date">May 2024 – Jul 2024</span>
-                    <p>CNN-based food classification system with automated PDF recipe generation (91% accuracy).</p>
+                    <div class="card-header">
+                        <h3>Gourmet Vision</h3>
+                        <span class="date">May 2024 – Jul 2024</span>
+                    </div>
+                    <p>Built a CNN-based food image classification system with a full-stack web app for image upload, prediction, and automated PDF recipe generation, achieving 91% accuracy.</p>
+                    <p>Preprocessed images using OpenCV, augmentation, normalization.</p>
                     <p><strong>Tools:</strong> Python, HTML, CSS, JS, OpenCV</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>SATS - Student Tracking</h3>
+                        <span class="date">Dec 2023 – Feb 2024</span>
+                    </div>
+                    <p>Designed a Student management system with interfaces for Admin, Faculty, and Students with role-based access for efficient data management.</p>
+                    <p><strong>Tools:</strong> Django, MySQL</p>
                 </div>
             </div>
         </div>
@@ -253,7 +348,6 @@
         <div class="container reveal">
             <h2>Skills</h2>
             <div class="card" style="text-align: center;">
-                
                 <h3>Core Competencies</h3>
                 <div class="skills-list">
                     <span class="skill-tag">Data Structures & Algorithms</span>
@@ -285,8 +379,9 @@
                     <span class="skill-tag">NumPy</span>
                     <span class="skill-tag">TensorFlow</span>
                     <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Agile</span>
                 </div>
-
             </div>
         </div>
     </section>
@@ -296,16 +391,40 @@
             <h2>Education</h2>
             <div class="card-container">
                 <div class="card">
-                    <h3>New York University</h3>
-                    <h4>MS in Computer Science</h4>
-                    <span class="date">Sep 2025 – Present | GPA: 3.45/4.0</span>
-                    <p>Coursework: Algorithms, Computer Vision, Information Visualisation, Software Engineering, Interactive Computer Graphics, Big Data</p>
+                    <div class="card-header">
+                        <h3>New York University</h3>
+                        <span class="date">Sep 2025 – Present</span>
+                    </div>
+                    <h4>MS in Computer Science | GPA: 3.45/4.0</h4>
+                    <p>Relevant Coursework: Design and Analysis of Algorithms, Computer Vision, Information Visualization, Software Engineering, Interactive Computer Graphics, Big Data</p>
                 </div>
                 <div class="card">
-                    <h3>RNS Institute of Technology</h3>
-                    <h4>BE in Computer Science</h4>
-                    <span class="date">Dec 2021 – May 2025 | GPA: 3.95/4.0</span>
-                    <p>Ranked in top 10, awarded three academic excellence medals.</p>
+                    <div class="card-header">
+                        <h3>RNS Institute of Technology</h3>
+                        <span class="date">Dec 2021 – May 2025</span>
+                    </div>
+                    <h4>BE in Computer Science | GPA: 3.95/4.0</h4>
+                    <p>Consistently ranked in the top 10 and awarded three academic excellence medals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership">
+        <div class="container reveal">
+            <h2>Leadership & Activities</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Social Media Head - Aikya</h3>
+                    <p>Collaborative student initiative. Conducted hands-on workshops, mentoring over 50 students in technical topics like Web Development and Data Science.</p>
+                </div>
+                <div class="card">
+                    <h3>Member - AdroiT (Tech Club)</h3>
+                    <p>Organized hackathons attended by over 100 participants, fostering innovation in Machine Learning and Cyber Security.</p>
+                </div>
+                <div class="card">
+                    <h3>Research Paper</h3>
+                    <p><strong>Empowering Women: Achieving Work-Life Balance through AI/ML Technologies</strong> (Published, SSRN, Abstract ID: 5043477)</p>
                 </div>
             </div>
         </div>
@@ -319,7 +438,7 @@
             <div class="contact-links">
                 <a href="mailto:avnawork@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
                 <a href="https://linkedin.com/in/anoopvasistna" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/YourGitHubUsername" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/anupvna" target="_blank"><i class="fa-brands fa-github"></i></a>
             </div>
             
             <a href="Anoop_Resume.pdf" download="Anoop_Vasist_Resume.pdf" class="resume-btn">Download Resume</a>
@@ -333,7 +452,7 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
+                var elementVisible = 50;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
@@ -358,6 +477,9 @@
                 }
             });
         });
+
+        // Set video playback speed to 50%
+        document.getElementById('myVideo').playbackRate = 0.5;
     </script>
 </body>
 </html>
