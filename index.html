@@ -153,6 +153,9 @@ section{padding:96px 0;border-top:1px solid var(--line)}
 .music-ctrl button{font:inherit;cursor:pointer;background:transparent;color:var(--text)}
 .music-ctrl button[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:#2A0716}
 .hint{font-size:.88rem;color:var(--muted);margin-left:auto}
+.dyk{margin-top:26px;padding-top:20px;border-top:1px dashed var(--line);font-size:.95rem;color:var(--muted);max-width:70ch}
+.dyk b{color:var(--text);font-weight:600}
+.swara .ratio{font:600 .8rem var(--body);color:var(--pink);margin-top:2px}
 .recipe{list-style:none;padding:0;margin:18px 0 0;font-size:.95rem}
 .recipe li{display:flex;gap:12px;padding:8px 0;border-top:1px dashed var(--line);color:var(--muted)}
 .recipe li span{color:var(--text);min-width:92px}
@@ -313,7 +316,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="music-top">
           <div>
             <h3>Carnatic music</h3>
-            <p>Carnatic music is South Indian classical music, built on ragas, rhythm cycles and a lot of practice. Try it: tap the swaras below or use your keyboard.</p>
+            <p>Carnatic music is where I first fell for patterns. Every swara is a clean frequency ratio, every raga follows rules, and every tala is a cycle that wraps around. Writing code scratches the same itch. Tap a swara or use your keyboard to hear it, and see its ratio to Sa.</p>
             <p class="raga">Raga: <b>Mayamalavagowla</b>, the first raga most students learn</p>
           </div>
         </div>
@@ -321,8 +324,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="music-ctrl">
           <button class="btn" id="drone" aria-pressed="false">Tanpura drone</button>
           <button class="btn" id="sarali">Play a sarali varisai</button>
-          <span class="hint" id="hint">Keys S R G M P D N then K for high Sa</span>
+          <span class="hint" id="readout" aria-live="polite">Keys S R G M P D N, then K for high Sa</span>
         </div>
+        <p class="dyk"><b>Did you know?</b> All 72 melakarta ragas come from simple counting: 6 ways to choose Ri and Ga, times 6 ways to choose Da and Ni, times 2 choices of Ma. 6 × 6 × 2 = 72. It's an enumeration problem that's centuries old.</p>
       </article>
 
       <article class="card">
@@ -390,13 +394,13 @@ addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passi
 /* ---------- Carnatic swara keyboard (Mayamalavagowla) ---------- */
 const SA=233.08; // Sa around B♭3, a comfortable male shruti
 const notes=[
-  {s:'Sa',n:'Shadjam',st:0,k:'s'},{s:'Ri',n:'Shuddha Ri',st:1,k:'r'},
-  {s:'Ga',n:'Antara Ga',st:4,k:'g'},{s:'Ma',n:'Shuddha Ma',st:5,k:'m'},
-  {s:'Pa',n:'Panchamam',st:7,k:'p'},{s:'Da',n:'Shuddha Da',st:8,k:'d'},
-  {s:'Ni',n:'Kakali Ni',st:11,k:'n'},{s:'Ṡa',n:'Tara Sa',st:12,k:'k'}];
+  {s:'Sa',n:'Shadjam',r:[1,1],k:'s'},{s:'Ri',n:'Shuddha Ri',r:[16,15],k:'r'},
+  {s:'Ga',n:'Antara Ga',r:[5,4],k:'g'},{s:'Ma',n:'Shuddha Ma',r:[4,3],k:'m'},
+  {s:'Pa',n:'Panchamam',r:[3,2],k:'p'},{s:'Da',n:'Shuddha Da',r:[8,5],k:'d'},
+  {s:'Ni',n:'Kakali Ni',r:[15,8],k:'n'},{s:'Ṡa',n:'Tara Sa',r:[2,1],k:'k'}];
 const wrap=document.getElementById('swaras');
 notes.forEach((x,i)=>{const b=document.createElement('button');b.className='swara';b.type='button';
-  b.innerHTML=`<strong>${x.s}</strong><small>${x.n}</small><kbd>${x.k.toUpperCase()}</kbd>`;
+  b.innerHTML=`<strong>${x.s}</strong><small>${x.n}</small><span class="ratio">${x.r[0]}:${x.r[1]}</span><kbd>${x.k.toUpperCase()}</kbd>`;
   b.setAttribute('aria-label',`Play ${x.s}, ${x.n}`);
   b.addEventListener('pointerdown',()=>play(i));
   b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play(i)}});
@@ -406,6 +410,8 @@ function audio(){if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContex
   const comp=ctx.createDynamicsCompressor();master.connect(comp);comp.connect(ctx.destination);}
   if(ctx.state==='suspended')ctx.resume();return ctx;}
 const f=st=>SA*Math.pow(2,st/12);
+const fr=i=>SA*notes[i].r[0]/notes[i].r[1];
+const readout=document.getElementById('readout');
 /* plucked, veena-like tone with a small gamaka slide into the note */
 function pluck(freq,t,dur=1.4,vol=.32){
   const c=audio(),g=c.createGain(),lp=c.createBiquadFilter();
@@ -417,7 +423,8 @@ function pluck(freq,t,dur=1.4,vol=.32){
     o.connect(og);og.connect(lp);o.start(t);o.stop(t+dur+.05);});
   lp.connect(g);g.connect(master);}
 function flash(i,delay=0){setTimeout(()=>{notes[i].el.classList.add('on');setTimeout(()=>notes[i].el.classList.remove('on'),220)},delay)}
-function play(i){pluck(f(notes[i].st),audio().currentTime);flash(i);}
+function play(i){const x=notes[i],hz=fr(i);pluck(hz,audio().currentTime);flash(i);
+  readout.textContent=`${x.s} = ${x.r[0]}:${x.r[1]} × Sa = ${hz.toFixed(1)} Hz`;}
 addEventListener('keydown',e=>{if(e.repeat||e.metaKey||e.ctrlKey||/INPUT|TEXTAREA/.test(e.target.tagName))return;
   const i=notes.findIndex(n=>n.k===e.key.toLowerCase());
   if(i>-1&&document.getElementById('off-the-clock').getBoundingClientRect().top<innerHeight){play(i)}});
@@ -436,7 +443,7 @@ droneBtn.addEventListener('click',()=>{
 const sarali=[0,1,2,3,4,5,6,7,7,6,5,4,3,2,1,0];
 document.getElementById('sarali').addEventListener('click',()=>{
   const c=audio(),t0=c.currentTime+.05,step=.42;
-  sarali.forEach((i,j)=>{pluck(f(notes[i].st),t0+j*step,1.1);flash(i,j*step*1000+50);});
+  sarali.forEach((i,j)=>{pluck(fr(i),t0+j*step,1.1);flash(i,j*step*1000+50);});
 });
 </script>
 </body>
