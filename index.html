@@ -1,490 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anoop Vasist Navile Anandkumar | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* --- Core Styles (Dark Theme) --- */
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                
-            margin: 0; 
-            line-height: 1.6; 
-            color: #d1d1d1; 
-            background-color: #0a0e17;
-            overflow-x: hidden; 
-        }
-        
-        /* --- Video Background --- */
-        .video-bg {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
-            transform: translate(-50%, -50%);
-            object-fit: cover; 
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anoop Vasist | Software Engineer</title>
+<meta name="description" content="Anoop Vasist Navile Anandkumar: MS CS at NYU, backend and full-stack engineer. Previously SDE at HashedIn by Deloitte.">
+<meta property="og:title" content="Anoop Vasist | Software Engineer">
+<meta property="og:description" content="Backend and full-stack engineer. MS CS at NYU.">
+<meta property="og:image" content="photo.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230F1A2E'/><text x='32' y='43' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%23F4B860'>AV</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C1424;        /* hudson at night */
+  --deep:#13203A;       /* dusk */
+  --line:#24324F;
+  --text:#E9EDF5;
+  --muted:#93A0B8;
+  --amber:#F4B860;      /* city lights */
+  --pink:#FF7AAE;       /* tower tip */
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+  --w:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--ink);color:var(--text);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(900px 500px at 85% -10%,#1E3A6B66,transparent 70%),radial-gradient(600px 400px at -10% 30%,#3A1F4A33,transparent 70%)}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4.2vw,3rem);font-weight:800}
+h3{font-size:1.3rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+.muted{color:var(--muted)}
 
-        /* --- Navbar --- */
-        nav { 
-            background: rgba(15, 20, 30, 0.95);
-            color: #fff; 
-            padding: 1rem; 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            box-shadow: 0 2px 15px rgba(0,0,0,0.5); 
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-        nav ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        nav a { 
-            color: #b0c4de; 
-            text-decoration: none; 
-            font-weight: 500; 
-            transition: all 0.3s;
-            padding: 5px 10px;
-            font-size: 0.95rem;
-        }
-        nav a:hover, nav a.active { color: #5dade2; }
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:#0C1424cc;backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:800 1.25rem var(--display);text-decoration:none;letter-spacing:-.03em}
+.logo span{color:var(--amber)}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;align-items:center}
+nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+nav ul a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.95rem;border:1px solid var(--line);transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:var(--muted)}
+.btn.solid{background:var(--amber);color:#1A1204;border-color:var(--amber)}
+.btn.solid:hover{background:#FFCB7E}
+nav .btn{padding:8px 16px}
+@media(max-width:760px){nav ul li:not(:last-child){display:none}}
 
-        /* --- Sections --- */
-        section { 
-            padding: 5rem 2rem 2rem 2rem; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center;
-            box-sizing: border-box; 
-        }
-        
-        .container { max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-        
-        /* --- Animations (Scroll Reveal) --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+/* hero */
+.hero{padding:72px 0 96px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+.hello{font-size:1.1rem;color:var(--amber);font-weight:500;margin-bottom:18px}
+.hero h1{font-size:clamp(3.2rem,8.4vw,6.6rem);font-weight:800;letter-spacing:-.045em;line-height:.95}
+.hero h1 .last{display:block;color:transparent;-webkit-text-stroke:1.5px var(--text);font-weight:800}
+.lede{font-size:clamp(1.1rem,1.6vw,1.3rem);max-width:34ch;margin:28px 0 34px;color:#C9D2E3}
+.lede b{color:var(--text);font-weight:600}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.socials{display:flex;gap:18px;margin-top:30px;font-size:.95rem}
+.socials a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+.socials a:hover{color:var(--text);border-color:var(--amber)}
+.portrait{position:relative}
+.portrait img{border-radius:28px 28px 28px 120px;aspect-ratio:780/714;object-fit:cover;width:100%;height:auto;box-shadow:0 40px 80px -30px #000c}
+.portrait figcaption{position:absolute;right:-6px;bottom:-18px;background:var(--deep);border:1px solid var(--line);padding:10px 16px;border-radius:14px;font-size:.88rem;color:var(--muted)}
+.portrait figcaption b{color:var(--text);font-weight:600}
+.status{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5EE3A1;margin-right:8px;box-shadow:0 0 0 4px #5EE3A126}
+@media(max-width:880px){.hero .wrap{grid-template-columns:1fr}.portrait{max-width:420px}.hero{padding-top:40px}}
 
-        /* --- Headings --- */
-        h1, h2 { color: #fff; font-family: 'Roboto', sans-serif; }
-        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; }
-        h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background: #5dade2;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
+/* load sequence (single orchestrated moment) */
+@media (prefers-reduced-motion:no-preference){
+  .hero [data-in]{opacity:0;transform:translateY(14px);animation:in .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero [data-in="2"]{animation-delay:.12s}.hero [data-in="3"]{animation-delay:.24s}
+  .hero [data-in="4"]{animation-delay:.36s}.hero [data-in="5"]{animation-delay:.5s}
+  @keyframes in{to{opacity:1;transform:none}}
+}
 
-        /* --- Grid Layouts --- */
-        .card-container { display: grid; gap: 20px; width: 100%; }
+/* sections */
+section{padding:96px 0;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:280px 1fr;gap:48px}
+.sec-head > h2{position:sticky;top:110px;align-self:start}
+.sec-head > h2 small{display:block;font:400 1rem/1.5 var(--body);color:var(--muted);letter-spacing:0;margin-top:14px;max-width:24ch}
+@media(max-width:880px){.sec-head{grid-template-columns:1fr;gap:32px}.sec-head > h2{position:static}}
 
-        /* Experience & Projects (2-Column) */
-        #experience .card-container, #projects .card-container { 
-            grid-template-columns: repeat(2, 1fr); 
-        }
+/* experience */
+.job{padding:0 0 44px 28px;border-left:1px solid var(--line);position:relative}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--amber)}
+.job .when{font-size:.9rem;color:var(--muted)}
+.job h3{margin:4px 0 2px}
+.job .role{color:var(--amber);font-weight:500;margin-bottom:14px}
+.job ul{margin:0;padding-left:18px;color:#C9D2E3}
+.job li{margin-bottom:8px;max-width:68ch}
+.job li::marker{color:var(--line)}
+.num{color:var(--text);font-weight:600}
 
-        /* Leadership (3-Column) */
-        #leadership .card-container { 
-            grid-template-columns: repeat(3, 1fr); 
-        }
+/* projects */
+.projects{display:grid;gap:22px}
+.proj{background:linear-gradient(180deg,var(--deep),#101B31);border:1px solid var(--line);border-radius:22px;padding:32px;display:grid;grid-template-columns:1fr 200px;gap:32px}
+.proj .stat{border-left:1px solid var(--line);padding-left:28px;display:flex;flex-direction:column;justify-content:center}
+.proj .stat strong{font:800 3.2rem/1 var(--display);color:var(--amber);letter-spacing:-.04em}
+.proj .stat span{font-size:.9rem;color:var(--muted);margin-top:8px}
+.proj h3{font-size:1.65rem;margin-bottom:10px}
+.proj p{color:#C9D2E3;max-width:60ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px;padding:0;list-style:none}
+.tags li{font-size:.82rem;padding:4px 11px;border-radius:999px;background:#ffffff0d;color:var(--muted)}
+.links{display:flex;gap:10px}
+.links .btn{padding:8px 16px;font-size:.9rem}
+@media(max-width:700px){.proj{grid-template-columns:1fr;padding:24px}.proj .stat{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}}
+.earlier{margin-top:40px}
+.earlier h3{font-size:1rem;color:var(--muted);font-family:var(--body);font-weight:500;margin-bottom:6px}
+.earlier ul{list-style:none;padding:0;margin:0}
+.earlier li{display:grid;grid-template-columns:220px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}
+.earlier li b{font-weight:600}
+.earlier li span{color:var(--muted)}
+@media(max-width:600px){.earlier li{grid-template-columns:1fr;gap:4px}}
 
-        /* Education (2-Column) */
-        #education .card-container { 
-            grid-template-columns: repeat(2, 1fr); 
-        }
-        
-        /* --- Card Style (Reference Image Style) --- */
-        .card { 
-            background: rgba(20, 25, 35, 0.7);
-            backdrop-filter: blur(10px);
-            color: #d1d1d1; 
-            padding: 1.8rem; 
-            border-radius: 12px; 
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, border-color 0.3s; 
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .card:hover { transform: translateY(-5px); border-color: rgba(93, 173, 226, 0.3); }
-        
-        /* --- Card Content Styling --- */
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 1rem;
-        }
+/* skills */
+.skills{display:grid;gap:0}
+.skills div{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.skills div:first-child{padding-top:0}
+.skills dt{color:var(--muted)}
+.skills dd{margin:0}
+@media(max-width:600px){.skills div{grid-template-columns:1fr;gap:4px}}
 
-        .card-header h3 { 
-            color: #5dade2; 
-            margin: 0; 
-            font-size: 1.4rem;
-        }
-        
-        .date { 
-            font-size: 0.85rem; 
-            color: #fff; 
-            background: rgba(93, 173, 226, 0.2); 
-            padding: 5px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(93, 173, 226, 0.3);
-            white-space: nowrap;
-        }
+/* off the clock */
+.otc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{border:1px solid var(--line);border-radius:22px;padding:28px;background:#ffffff05}
+.card h3{margin-bottom:8px}
+.card p{color:#C9D2E3}
+.music{grid-column:1/-1;background:radial-gradient(500px 260px at 100% 0,#FF7AAE1f,transparent 70%),linear-gradient(180deg,var(--deep),#101B31);padding:36px}
+.music-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.music-top p{max-width:52ch}
+.raga{font-size:.9rem;color:var(--muted);margin-top:10px}
+.raga b{color:var(--pink);font-weight:600}
+.swaras{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin:30px 0 22px}
+.swara{appearance:none;border:1px solid var(--line);background:var(--ink);color:var(--text);border-radius:16px;padding:22px 0 16px;cursor:pointer;font:inherit;display:flex;flex-direction:column;align-items:center;gap:4px;transition:border-color .15s,background .15s,transform .1s}
+.swara:hover{border-color:var(--pink)}
+.swara:active,.swara.on{background:#FF7AAE22;border-color:var(--pink);transform:translateY(2px)}
+.swara strong{font:700 1.6rem var(--display)}
+.swara small{font-size:.75rem;color:var(--muted)}
+.swara kbd{font:inherit;font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 6px;margin-top:6px}
+@media(max-width:640px){.swaras{grid-template-columns:repeat(4,1fr)}.swara kbd{display:none}}
+.music-ctrl{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.music-ctrl button{font:inherit;cursor:pointer;background:transparent;color:var(--text)}
+.music-ctrl button[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:#2A0716}
+.hint{font-size:.88rem;color:var(--muted);margin-left:auto}
+.recipe{list-style:none;padding:0;margin:18px 0 0;font-size:.95rem}
+.recipe li{display:flex;gap:12px;padding:8px 0;border-top:1px dashed var(--line);color:var(--muted)}
+.recipe li span{color:var(--text);min-width:92px}
+.create-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
 
-        .card h4 { 
-            color: #fff; 
-            margin: 0 0 10px 0; 
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        
-        .card p, .card li { font-size: 0.95rem; color: #d1d1d1; }
-        
-        ul.details { padding-left: 20px; margin: 0; }
-        ul.details li { margin-bottom: 0.5rem; }
+/* edu + lead */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:760px){.two,.otc-grid{grid-template-columns:1fr}}
+.card .when{font-size:.9rem;color:var(--muted);margin-bottom:6px}
+.card .sub{color:var(--amber);margin:2px 0 12px;font-weight:500}
 
-        /* Skills specific */
-        .skills-list {
-            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-            margin-top: 1rem;
-        }
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.05); 
-            color: #5dade2; 
-            padding: 6px 12px; 
-            border-radius: 20px; 
-            font-size: 0.85rem; 
-            font-weight: 500;
-            border: 1px solid rgba(93, 173, 226, 0.2);
-        }
-
-        /* --- Profile Section --- */
-        #home { text-align: center; }
-        #home .card { max-width: 800px; margin: auto; align-items: center; }
-
-        .profile-container {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1rem auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid #5dade2;
-        }
-        .profile-container img { width: 100%; height: 100%; object-fit: cover; }
-        
-        /* Updated Name Color */
-        #home h1 { font-size: 3rem; margin: 0.5rem 0; color: #5dade2; }
-        
-        .subtitle { font-size: 1.3rem; color: #5dade2; margin-bottom: 1rem; font-weight: bold; }
-        .contact-info { color: #b0c4de; font-weight: 400; font-size: 1rem; }
-
-        /* --- Buttons & Links --- */
-        .resume-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: transparent;
-            color: #5dade2;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            border: 2px solid #5dade2;
-            transition: all 0.3s;
-        }
-        .resume-btn:hover { background-color: #5dade2; color: #0a0e17; }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 15px;
-            font-size: 2rem;
-        }
-        .contact-links a { color: #d1d1d1; transition: color 0.3s; }
-        .contact-links a:hover { color: #5dade2; }
-
-        /* --- Leadership Specifics --- */
-        /* Updated Leadership Heading Color */
-        #leadership .card h3 { 
-            color: #5dade2; 
-            margin: 0 0 10px 0; 
-            font-size: 1.3rem;
-        }
-
-        /* --- Media Queries for Mobile --- */
-        @media (max-width: 992px) {
-            #experience .card-container, #projects .card-container, #education .card-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            #leadership .card-container {
-                grid-template-columns: 1fr;
-            }
-            #home h1 { font-size: 2rem; }
-            .card-header { flex-direction: column; align-items: flex-start; }
-        }
-    </style>
+/* contact */
+.contact{text-align:left;padding:120px 0 80px}
+.contact h2{font-size:clamp(2.4rem,6vw,4.6rem);letter-spacing:-.04em;max-width:14ch}
+.contact p{margin:22px 0 34px;max-width:46ch;color:#C9D2E3}
+.mail{font:600 clamp(1.3rem,3vw,2rem) var(--display);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:4px}
+.mail:hover{color:var(--amber)}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.9rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
 </head>
-<body onload="window.location.hash = '#home';">
+<body>
 
-    <video autoplay loop muted playsinline class="video-bg" id="myVideo">
-        <source src="bg.mp4" type="video/mp4">
-    </video>
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">AV<span>.</span></a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#off-the-clock">Off the clock</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="btn" href="Anoop_Vasist_Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <nav>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="hello" data-in="1">Hi, I'm</p>
+      <h1 data-in="2">Anoop<span class="last">Vasist</span></h1>
+      <p class="lede" data-in="3">I build <b>backend systems that keep working when things fail</b>, and the full-stack products on top of them. MS CS at NYU, previously an SDE at HashedIn by Deloitte.</p>
+      <div class="actions" data-in="4">
+        <a class="btn solid" href="#projects">See my work</a>
+        <a class="btn" href="mailto:anoopnavile@gmail.com">Email me</a>
+      </div>
+      <div class="socials" data-in="5">
+        <a href="https://github.com/anupvna" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/anoopvasistna/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="Anoop_Vasist_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      </div>
+    </div>
+    <figure class="portrait" data-in="3" style="margin:0">
+      <img src="photo.jpg" alt="Anoop smiling in front of the Lower Manhattan skyline at dusk" width="780" height="714">
+      <figcaption><span class="status"></span><b>Open to SWE roles</b> in New York</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+<section id="experience">
+  <div class="wrap sec-head">
+    <h2>Experience<small>Where I've shipped code that real people used every week.</small></h2>
+    <div>
+      <article class="job">
+        <p class="when">Feb 2026 to present, New York</p>
+        <h3>New York University</h3>
+        <p class="role">CS Team Lead, PASS Tutoring</p>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <li>Lead a team of <span class="num">15+ peer tutors</span> supporting <span class="num">50+ CS students</span> each semester, and tutor students weekly myself.</li>
+          <li>Hire new tutors through technical interviews and graded entrance exams, and set the program's quality benchmarks.</li>
         </ul>
-    </nav>
+      </article>
+      <article class="job">
+        <p class="when">Feb 2025 to Jul 2025, Bengaluru</p>
+        <h3>HashedIn by Deloitte</h3>
+        <p class="role">Software Development Engineer (intern, converted to full-time)</p>
+        <ul>
+          <li>Built an AI evaluation assistant that auto-reviewed candidate code, cutting review time from <span class="num">60–90 min to about 15 min</span> per candidate across 210+ interns a week.</li>
+          <li>Integrated LLM APIs into the assessment pipeline (<span class="num">~4,000 requests/week</span>) and hardened prompts against injection and answer leakage.</li>
+          <li>Pipelined next-question generation while candidates answered, removing 20–30 s waits between questions.</li>
+          <li>Shipped 25+ Spring Boot REST endpoints with RBAC and JWT session isolation, containerized with Docker behind CI/CD.</li>
+        </ul>
+      </article>
+      <article class="job">
+        <p class="when">Jul 2024 to Dec 2024, Bengaluru</p>
+        <h3>MindPath Innovations</h3>
+        <p class="role">Software Engineer Intern</p>
+        <ul>
+          <li>Built a full-stack LMS (React + Django) serving <span class="num">3,800+ students and 300 faculty</span> across 3 institutions.</li>
+          <li>Replaced per-record spreadsheet edits with a login-protected reporting platform, saving 50+ staff about <span class="num">4 hours a week</span> each.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <section id="home">
-        <div class="reveal card">
-            <div class="profile-container">
-                <img src="Photo.jpg" alt="Anoop Vasist Navile Anandkumar">
+<section id="projects">
+  <div class="wrap sec-head">
+    <h2>Projects<small>Both are live. Click around, then read the code.</small></h2>
+    <div>
+      <div class="projects">
+        <article class="proj">
+          <div>
+            <h3>Relay</h3>
+            <p>A webhook delivery service that uses PostgreSQL as a concurrent job queue, with lease-based crash recovery, HMAC-signed payloads, retries with jittered backoff, a dead-letter queue and a live dashboard. It holds 99.9% delivery with zero duplicates even when 30% of receivers fail.</p>
+            <ul class="tags"><li>Python</li><li>FastAPI</li><li>asyncio</li><li>PostgreSQL</li><li>Docker</li></ul>
+            <div class="links">
+              <a class="btn solid" href="https://relay-webhooks.onrender.com" target="_blank" rel="noopener">Live demo</a>
+              <a class="btn" href="https://github.com/anupvna/relay-webhooks" target="_blank" rel="noopener">Code</a>
             </div>
-            <h1>Anoop Vasist Navile Anandkumar</h1>
-            <p class="subtitle">Computer Science Graduate Student at NYU</p>
-            <p class="contact-info">New York | avnawork@gmail.com | +1 (347) 652-9844</p>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="container reveal">
-            <h2>Experience</h2>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>HashedIn by Deloitte</h3>
-                        <span class="date">Feb 2025 – Jul 2025</span>
-                    </div>
-                    <h4>Software Development Engineer & Intern</h4>
-                    <ul class="details">
-                        <li>Built scalable full-stack features with Angular, Spring Boot, .NET Core and developed RESTful APIs.</li>
-                        <li>Implemented secure backend systems using JWT authentication, RBAC, and Docker; set up CI/CD pipelines and contributed through Agile sprints, code reviews, unit testing, and production deployments.</li>
-                        <li>Collaborated in a 5-member team to modernize the company’s assessment/testing platform by refactoring core modules, redesigning UI/UX, and improving processing time by 30%, while integrating LLM-based question generation, voice-to-text analysis, and automated counter-question evaluation for interview and exam workflows.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Mind Path Innovations Pvt. Ltd</h3>
-                        <span class="date">Jul 2024 – Dec 2024</span>
-                    </div>
-                    <h4>Software Development Intern</h4>
-                    <ul class="details">
-                        <li>Developed dynamic full-stack web applications using HTML, Django, and MySQL for internal management systems.</li>
-                        <li>Designed REST APIs with CRUD operations, authentication, and session management.</li>
-                    </ul>
-                </div>
+          </div>
+          <div class="stat"><strong>7.8×</strong><span>faster p50 latency (92 s to 12 s) after fixing head-of-line blocking</span></div>
+        </article>
+        <article class="proj">
+          <div>
+            <h3>Job Application Tracker</h3>
+            <p>A multi-user tracker with session auth written from scratch: scrypt hashing, HttpOnly cookies, CSRF protection and rate limiting. Zod schemas are shared between React and Express as one validation contract, deployed serverless on Vercel with Neon Postgres.</p>
+            <ul class="tags"><li>TypeScript</li><li>React</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li></ul>
+            <div class="links">
+              <a class="btn solid" href="https://job-tracker-chi-five-17.vercel.app" target="_blank" rel="noopener">Live demo</a>
+              <a class="btn" href="https://github.com/anupvna/job-tracker" target="_blank" rel="noopener">Code</a>
             </div>
+          </div>
+          <div class="stat"><strong>254</strong><span>tests in CI, 87.5% line coverage, 136 ms p95 API latency</span></div>
+        </article>
+      </div>
+      <div class="earlier">
+        <h3>Earlier work</h3>
+        <ul>
+          <li><b>Street View Geolocation</b><span>Transformer-based multi-view model predicting U.S. state and GPS from 263,920 panoramas. 0.943 Kaggle score.</span></li>
+          <li><b>Job Prep AI</b><span>Mock-interview platform with resume parsing and LLM-driven behavioral and technical rounds. React, Django, MySQL.</span></li>
+          <li><b>Gourmet Vision</b><span>CNN food classifier (91% accuracy) that turns a photo into a downloadable recipe PDF.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap sec-head">
+    <h2>Toolkit</h2>
+    <dl class="skills" style="margin:0">
+      <div><dt>Languages</dt><dd>Java, Python, TypeScript, JavaScript, C++, C, SQL</dd></div>
+      <div><dt>Backend &amp; data</dt><dd>Spring Boot, FastAPI, Node.js, Express, Django, PostgreSQL, MySQL, MongoDB</dd></div>
+      <div><dt>Frontend</dt><dd>React, HTML/CSS, Angular</dd></div>
+      <div><dt>Cloud &amp; DevOps</dt><dd>AWS, GCP, Docker, GitHub Actions CI/CD, Vercel</dd></div>
+      <div><dt>AI</dt><dd>LLM API integration, prompt engineering, PyTorch, Claude Code</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="off-the-clock">
+  <div class="wrap sec-head">
+    <h2>Off the clock<small>The things I do when I'm not debugging.</small></h2>
+    <div class="otc-grid">
+      <article class="card music">
+        <div class="music-top">
+          <div>
+            <h3>Carnatic music</h3>
+            <p>Carnatic music is South Indian classical music, built on ragas, rhythm cycles and a lot of practice. Try it: tap the swaras below or use your keyboard.</p>
+            <p class="raga">Raga: <b>Mayamalavagowla</b>, the first raga most students learn</p>
+          </div>
         </div>
-    </section>
-
-    <section id="projects">
-        <div class="container reveal">
-            <h2>Projects</h2>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Street View Geolocation</h3>
-                        <span class="date">Nov 2025 - Dec 2025</span>
-                    </div>
-                    <p>Predicted U.S. state and GPS coordinates from 263,920 panoramic images using a transformer-based multi-view deep learning pipeline; applied feature fusion, multi-task loss, and model ensembling to achieve a 0.943 Kaggle score.</p>
-                    <p>Applied data augmentation, transfer learning, and hyperparameter tuning to improve generalization.</p>
-                    <p><strong>Tools:</strong> Python, PyTorch, Transformers, OpenCV</p>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Job Prep AI Platform</h3>
-                        <span class="date">Sep 2024 – Nov 2024</span>
-                    </div>
-                    <p>Built a full-stack AI-powered interview preparation platform with NLP-based resume parsing and integrated LLM APIs for personalized behavioral and technical mock interviews.</p>
-                    <p>Designed secure RESTful backend with Django, token-based authentication, and session handling. Dynamic UI with React hooks, animations, and responsive design. Stored and processed user analytics using MySQL, enabling performance tracking.</p>
-                    <p><strong>Tools:</strong> React, Django, REST, MySQL, LLMs</p>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Gourmet Vision</h3>
-                        <span class="date">May 2024 – Jul 2024</span>
-                    </div>
-                    <p>Built a CNN-based food image classification system with a full-stack web app for image upload, prediction, and automated PDF recipe generation, achieving 91% accuracy.</p>
-                    <p>Preprocessed images using OpenCV, augmentation, normalization.</p>
-                    <p><strong>Tools:</strong> Python, HTML, CSS, JS, OpenCV</p>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>SATS - Student Tracking</h3>
-                        <span class="date">Dec 2023 – Feb 2024</span>
-                    </div>
-                    <p>Designed a Student management system with interfaces for Admin, Faculty, and Students with role-based access for efficient data management.</p>
-                    <p><strong>Tools:</strong> Django, MySQL</p>
-                </div>
-            </div>
+        <div class="swaras" id="swaras" aria-label="Swara keyboard"></div>
+        <div class="music-ctrl">
+          <button class="btn" id="drone" aria-pressed="false">Tanpura drone</button>
+          <button class="btn" id="sarali">Play a sarali varisai</button>
+          <span class="hint" id="hint">Keys S R G M P D N then K for high Sa</span>
         </div>
-    </section>
+      </article>
 
-    <section id="skills">
-        <div class="container reveal">
-            <h2>Skills</h2>
-            <div class="card" style="text-align: center;">
-                <h3>Core Competencies</h3>
-                <div class="skills-list">
-                    <span class="skill-tag">Data Structures & Algorithms</span>
-                    <span class="skill-tag">OOP</span>
-                    <span class="skill-tag">Databases</span>
-                    <span class="skill-tag">Operating Systems</span>
-                    <span class="skill-tag">Web Dev</span>
-                    <span class="skill-tag">Computer Networks</span>
-                </div>
+      <article class="card">
+        <h3>Cooking</h3>
+        <p>Cooking is my reset button after a long day of code. I approach a new dish the way I approach a new codebase: follow it exactly once, then start refactoring.</p>
+        <ul class="recipe">
+          <li><span>Prep</span>Read the whole recipe first, like reading the docs</li>
+          <li><span>Cook</span>Taste at every step: small commits, frequent tests</li>
+          <li><span>Serve</span>Ship it to friends and collect feedback</li>
+        </ul>
+      </article>
 
-                <h3>Languages</h3>
-                <div class="skills-list">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">SQL</span>
-                </div>
-
-                <h3>Tools and Frameworks</h3>
-                <div class="skills-list">
-                    <span class="skill-tag">Django</span>
-                    <span class="skill-tag">Spring Boot</span>
-                    <span class="skill-tag">.NET</span>
-                    <span class="skill-tag">REST</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">TensorFlow</span>
-                    <span class="skill-tag">OpenCV</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">Agile</span>
-                </div>
-            </div>
+      <article class="card">
+        <h3>Content creation</h3>
+        <p>I make content about the things I care about, from tech and student life in New York to food and music. Explaining something to an audience is the fastest way I know to find out whether I really understand it.</p>
+        <div class="create-row">
+          <a class="btn" href="https://www.linkedin.com/in/anoopvasistna/" target="_blank" rel="noopener">Follow along on LinkedIn</a>
         </div>
-    </section>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <section id="education">
-        <div class="container reveal">
-            <h2>Education</h2>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>New York University</h3>
-                        <span class="date">Sep 2025 – Present</span>
-                    </div>
-                    <h4>MS in Computer Science | GPA: 3.45/4.0</h4>
-                    <p>Relevant Coursework: Design and Analysis of Algorithms, Computer Vision, Information Visualization, Software Engineering, Interactive Computer Graphics, Big Data</p>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>RNS Institute of Technology</h3>
-                        <span class="date">Dec 2021 – May 2025</span>
-                    </div>
-                    <h4>BE in Computer Science | GPA: 3.95/4.0</h4>
-                    <p>Consistently ranked in the top 10 and awarded three academic excellence medals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="education">
+  <div class="wrap sec-head">
+    <h2>Education</h2>
+    <div class="two">
+      <article class="card">
+        <p class="when">Sep 2025 to May 2027</p>
+        <h3>New York University</h3>
+        <p class="sub">MS in Computer Science, Tandon</p>
+        <p class="muted">Algorithms, computer vision, information visualization, software engineering, big data.</p>
+      </article>
+      <article class="card">
+        <p class="when">Dec 2021 to May 2025</p>
+        <h3>RNS Institute of Technology</h3>
+        <p class="sub">BE in Computer Science, GPA 3.95/4.0</p>
+        <p class="muted">Ranked 3 of 200 in the department, with three academic excellence medals.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <section id="leadership">
-        <div class="container reveal">
-            <h2>Leadership & Teaching Activities</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>New York University – OASIS Peer Tutor (Computer Science Courses)</h3>
-                    <p>Tutor undergraduate students in core CS courses including algorithms and artificial intelligence, guiding them in debugging and
-problem-solving during weekly sessions.</p>
-                </div>
-                <div class="card">
-                    <h3>Social Media Head - Aikya</h3>
-                    <p>Collaborative student initiative. Conducted hands-on workshops, mentoring over 50 students in technical topics like Web Development and Data Science.</p>
-                </div>
-                <div class="card">
-                    <h3>Member - AdroiT (Tech Club)</h3>
-                    <p>Organized hackathons attended by over 100 participants, fostering innovation in Machine Learning and Cyber Security.</p>
-                </div>
-                <div class="card">
-                    <h3>Research Paper</h3>
-                    <p><strong>Empowering Women: Achieving Work-Life Balance through AI/ML Technologies</strong> (Published, SSRN, Abstract ID: 5043477)</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's build something together.</h2>
+    <p>I'm looking for full-time software engineering roles in backend, full-stack and applied AI. The fastest way to reach me is email.</p>
+    <a class="mail" href="mailto:anoopnavile@gmail.com">anoopnavile@gmail.com</a>
+    <div class="socials" style="margin-top:36px">
+      <a href="https://github.com/anupvna" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/anoopvasistna/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="tel:+13476529844">+1 (347) 652-9844</a>
+    </div>
+  </div>
+</section>
+</main>
 
-    <section id="contact">
-        <div class="reveal card" style="text-align: center; max-width: 500px; margin: auto;">
-            <h2>Contact Me</h2>
-            <p>Open to opportunities in Software Engineering/Development, Data Science and Artificial Intelligence</p>
-            
-            <div class="contact-links">
-                <a href="mailto:avnawork@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/anoopvasistna" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/anupvna" target="_blank"><i class="fa-brands fa-github"></i></a>
-            </div>
-            
-            <a href="Anoop_Resume.pdf" download="Anoop_Vasist_Resume.pdf" class="resume-btn">Download Resume</a>
-        </div>
-    </section>
+<footer><div class="wrap"><span>© <span id="yr"></span> Anoop Vasist Navile Anandkumar</span><span>Designed and built in New York</span></div></footer>
 
-    <script>
-        // Smooth Scroll Animations
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 50;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        
-        // Active Navbar Link based on scroll position
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            document.querySelectorAll('nav a').forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active');
-                }
-            });
-        });
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
 
-        // Set video playback speed to 50%
-        document.getElementById('myVideo').playbackRate = 0.5;
-    </script>
+/* ---------- Carnatic swara keyboard (Mayamalavagowla) ---------- */
+const SA=233.08; // Sa around B♭3, a comfortable male shruti
+const notes=[
+  {s:'Sa',n:'Shadjam',st:0,k:'s'},{s:'Ri',n:'Shuddha Ri',st:1,k:'r'},
+  {s:'Ga',n:'Antara Ga',st:4,k:'g'},{s:'Ma',n:'Shuddha Ma',st:5,k:'m'},
+  {s:'Pa',n:'Panchamam',st:7,k:'p'},{s:'Da',n:'Shuddha Da',st:8,k:'d'},
+  {s:'Ni',n:'Kakali Ni',st:11,k:'n'},{s:'Ṡa',n:'Tara Sa',st:12,k:'k'}];
+const wrap=document.getElementById('swaras');
+notes.forEach((x,i)=>{const b=document.createElement('button');b.className='swara';b.type='button';
+  b.innerHTML=`<strong>${x.s}</strong><small>${x.n}</small><kbd>${x.k.toUpperCase()}</kbd>`;
+  b.setAttribute('aria-label',`Play ${x.s}, ${x.n}`);
+  b.addEventListener('pointerdown',()=>play(i));
+  b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();play(i)}});
+  wrap.appendChild(b);x.el=b;});
+let ctx,master;
+function audio(){if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.5;
+  const comp=ctx.createDynamicsCompressor();master.connect(comp);comp.connect(ctx.destination);}
+  if(ctx.state==='suspended')ctx.resume();return ctx;}
+const f=st=>SA*Math.pow(2,st/12);
+/* plucked, veena-like tone with a small gamaka slide into the note */
+function pluck(freq,t,dur=1.4,vol=.32){
+  const c=audio(),g=c.createGain(),lp=c.createBiquadFilter();
+  lp.type='lowpass';lp.frequency.setValueAtTime(4200,t);lp.frequency.exponentialRampToValueAtTime(900,t+dur);
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.008);g.gain.exponentialRampToValueAtTime(.0008,t+dur);
+  [[1,'sawtooth',.5],[2,'triangle',.35],[3,'sine',.18]].forEach(([h,type,a])=>{
+    const o=c.createOscillator(),og=c.createGain();o.type=type;og.gain.value=a;
+    o.frequency.setValueAtTime(freq*h*.985,t);o.frequency.exponentialRampToValueAtTime(freq*h,t+.07);
+    o.connect(og);og.connect(lp);o.start(t);o.stop(t+dur+.05);});
+  lp.connect(g);g.connect(master);}
+function flash(i,delay=0){setTimeout(()=>{notes[i].el.classList.add('on');setTimeout(()=>notes[i].el.classList.remove('on'),220)},delay)}
+function play(i){pluck(f(notes[i].st),audio().currentTime);flash(i);}
+addEventListener('keydown',e=>{if(e.repeat||e.metaKey||e.ctrlKey||/INPUT|TEXTAREA/.test(e.target.tagName))return;
+  const i=notes.findIndex(n=>n.k===e.key.toLowerCase());
+  if(i>-1&&document.getElementById('off-the-clock').getBoundingClientRect().top<innerHeight){play(i)}});
+
+/* tanpura drone: Pa, Sa, Sa, low Sa, cycling */
+let droneTimer=null;
+const droneBtn=document.getElementById('drone');
+droneBtn.addEventListener('click',()=>{
+  const on=droneBtn.getAttribute('aria-pressed')!=='true';droneBtn.setAttribute('aria-pressed',on);
+  if(on){const seq=[f(-5),f(0),f(0),f(-12)];let k=0;
+    const tick=()=>{pluck(seq[k%4],audio().currentTime,3.2,.14);k++;};tick();droneTimer=setInterval(tick,700);}
+  else{clearInterval(droneTimer);}
+});
+
+/* sarali varisai 1: ascend and descend */
+const sarali=[0,1,2,3,4,5,6,7,7,6,5,4,3,2,1,0];
+document.getElementById('sarali').addEventListener('click',()=>{
+  const c=audio(),t0=c.currentTime+.05,step=.42;
+  sarali.forEach((i,j)=>{pluck(f(notes[i].st),t0+j*step,1.1);flash(i,j*step*1000+50);});
+});
+</script>
 </body>
 </html>
